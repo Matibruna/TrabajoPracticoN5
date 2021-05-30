@@ -59,6 +59,7 @@ namespace TP4
             List<Aeroplane> colaDespegue = new List<Aeroplane>();
             DateTime clock = new DateTime();
             string eventoActual = "";
+            IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
 
 
 
