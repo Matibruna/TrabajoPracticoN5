@@ -41,7 +41,7 @@ namespace TP4
         public double generarNumeroExponencial(double media)
         {
             Random rnd = new Random();
-            Double nro = Convert.ToDouble(rnd.NextDouble());//random del lenguaje
+            Double nro = Convert.ToDouble(rnd.NextDouble());
             Double lambda = 1 / media;
             Double log = Convert.ToDouble(Math.Log(Convert.ToDouble(1 - nro)));
             return (-1 / lambda) * log;
@@ -49,6 +49,35 @@ namespace TP4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            simulacion();
+        }
+
+        private void simulacion() 
+        {
+            Random rnd = new Random();
+            List<Aeroplane> colaLlegada = new List<Aeroplane>();
+            List<Aeroplane> colaDespegue = new List<Aeroplane>();
+            DateTime clock = new DateTime();
+            string eventoActual = "";
+
+
+
+            return;
+        }
+
+        public class Aeroplane 
+        {
+            public string nombre;
+            public double horaLlegada;
+            public double horaAterrizaje;
+            public double horaInicioDespegue;
+            public double horaDespegue;
+
+            public Aeroplane(string nombre, double horaLlegada)
+            {
+                this.nombre = nombre;
+                this.horaLlegada = horaLlegada;
+            }
 
         }
     }
