@@ -40,8 +40,11 @@ namespace TP4
 
         public double generarNumeroExponencial(double media)
         {
-
-            return 0;
+            Random rnd = new Random();
+            Double nro = Convert.ToDouble(rnd.NextDouble());//random del lenguaje
+            Double lambda = 1 / media;
+            Double log = Convert.ToDouble(Math.Log(Convert.ToDouble(1 - nro)));
+            return (-1 / lambda) * log;
         }
 
         private void button1_Click(object sender, EventArgs e)
