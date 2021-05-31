@@ -33,10 +33,9 @@ namespace TP4
             return ((suma - 6) * desviacion) + media;
         }
 
-        public double generarNumeroUniforme(double desde, double hasta) 
+        public double generarNumeroUniforme(double desde, double hasta, double random) 
         {
-            Random rnd = new Random();
-            return desde + (rnd.NextDouble() * (hasta - desde));
+            return desde + (random * (hasta - desde));
         }
 
         public double generarNumeroExponencial(double media, double random)
@@ -53,8 +52,9 @@ namespace TP4
 
         private void simulacion() 
         {
-            dt = new System.Data.DataTable();
-            //dt.Columns.Add("Nro Intervalo", typeof(Double));
+            // Se llama directamente al nombre de la tabla del Form
+            /*dt = new System.Data.DataTable();
+            dt.Columns.Add("Nro Intervalo", typeof(Double));
             dt.Columns.Add("Reloj", typeof(string));
             dt.Columns.Add("Evento", typeof(string));
             dt.Columns.Add("RND Llegada", typeof(Double));
@@ -68,27 +68,25 @@ namespace TP4
             dt.Columns.Add("En pista", typeof(string));
             dt.Columns.Add("RND Despegue", typeof(Double));
             dt.Columns.Add("Tiempo de Despegue", typeof(string));
-            dt.Columns.Add("Proximo evento", typeof(string));
+            dt.Columns.Add("Proximo evento", typeof(string));*/
 
             Random rnd = new Random();
+
             List<Aeroplane> colaLlegada = new List<Aeroplane>();
             List<Aeroplane> colaDespegue = new List<Aeroplane>();
-            //DateTime clock = new DateTime();
-            Stopwatch reloj = new Stopwatch();
+
+            string eventoActual = "";
+
+            IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
+            //List<Aeroplane> zonasAterrizaje = new List<Aeroplane>(30);
+
+            Aeroplane enPista;
 
             int minutosASimular = Convert.ToInt32(txtTiempoASimular.Text);
 
-            int milisegundosASimular = minutosASimular * 60000;
+            double milisegundosASimular = getMillisecondsFromMinutes(minutosASimular);
 
             var tiempoASimular = new System.TimeSpan(0, minutosASimular, 0);
-
-            string eventoActual = "";
-            IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
-
-            List<Aeroplane> zonasAterrizaje = new List<Aeroplane>(30);
-            //IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
-
-            Aeroplane enPista;
 
             int mediaLlegadaAeronaves = Convert.ToInt32(mediaExponencial.Text);
 
@@ -99,16 +97,19 @@ namespace TP4
             int hastaDespegue = Convert.ToInt32(despegueHasta.Text);
 
             int esperaMedia = Convert.ToInt32(mediaEspera.Text);
-            int esperaDesviacion = Convert.ToInt32(desviacionEspera.Text);
+            int esperaDesviacion = Convert.ToInt32(desviacionEspera.Text);;
 
-            reloj.Start();
-
-            var clock = new System.TimeSpan(0, 0, 0);
+            var clock = new TimeSpan(0, 0, 0);
 
             //Stopwatch clock = new Stopwatch();
-            //clock.Start();
 
-            while (clock.TotalMilliseconds < milisegundosASimular)
+            // ACUMULADORES 
+            TimeSpan tiempoLlegadaAcum = new TimeSpan(0,0,0);
+            TimeSpan tiempoAterrizajeAcum = new TimeSpan(0, 0, 0);
+            TimeSpan horaProximoEvento = new TimeSpan(0, 0, 0);
+            // ------------
+
+            while (clock.TotalMilliseconds < milisegundosASimular )
             {
                 if (clock.TotalMilliseconds == 0)
                 {
@@ -122,23 +123,53 @@ namespace TP4
 
                     double tiempoLlegadaMilisegundos = getMillisecondsFromMinutes(tiempoLlegadaMinutos);
 
-                    var tiempoLlegada = new System.TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos));
+                    var tiempoLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos));
 
-                    string tiempoLlegadaFormat = "" + tiempoLlegada.Hours + ":" + tiempoLlegada.Minutes + ":" + tiempoLlegada.Seconds;
+                    tiempoLlegadaAcum = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + tiempoLlegadaAcum.TotalMilliseconds)); ;
 
-                    //DataRow row = new DataRow("0:00:00", eventoActual, random, tiempoLlegadaFormat, tiempoLlegadaFormat, "", "", "", "", "", "", "", "", "");
+                    string tiempoLlegadaFormat = tiempoLlegada.Hours + ":" + tiempoLlegada.Minutes + ":" + tiempoLlegada.Seconds;
 
-                    dgvSimulacion.Rows.Add("0:00:00", eventoActual, random, tiempoLlegadaFormat, tiempoLlegadaFormat, 0, "", "", "", "", "", 0, "", "");
+                    TimeSpan horaProximaLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + clock.TotalMilliseconds));
 
-                    //clock.Start();
+                    string horaProximaLlegadaFormat = (horaProximaLlegada.Hours) + ":" + (horaProximaLlegada.Minutes) + ":" + (horaProximaLlegada.Seconds);
+
+                    horaProximoEvento = horaProximaLlegada;
+
+                    dgvSimulacion.Rows.Add("0:00:00", eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, 0, "", "", "", "", "", 0, "", "");
+                }
+                else
+                {
+                    eventoActual = "Llega Nave 1 / Autorizacion Nave 1";
+
+                    double random = rnd.NextDouble();
+
+                    double tiempoAterrizajeMinutos = generarNumeroUniforme(desdeAterrizaje, hastaAterrizaje, random);
+
+                    double tiempoAterrizajeMilisegundos = getMillisecondsFromMinutes(tiempoAterrizajeMinutos);
+
+                    TimeSpan tiempoAterrizaje = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoAterrizajeMilisegundos));
+
+                    tiempoAterrizajeAcum = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoAterrizajeMilisegundos + tiempoAterrizajeAcum.TotalMilliseconds));
+
+                    string tiempoAterrizajeFormat = tiempoAterrizaje.Hours + ":" + tiempoAterrizaje.Minutes + ":" + tiempoAterrizaje.Seconds;
+
+                    string relojFila = clock.Hours + ":" + clock.Minutes + ":" + clock.Seconds;
+
+                    TimeSpan horaProximoAterrizaje = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoAterrizajeMilisegundos + clock.TotalMilliseconds));
+
+                    string horaAterrizajeFormat = (horaProximoAterrizaje.Hours) + ":" + (horaProximoAterrizaje.Minutes) + ":" + (horaProximoAterrizaje.Seconds);
+
+                    dgvSimulacion.Rows.Add(relojFila, eventoActual, "-", "-", "-", random, tiempoAterrizajeFormat, horaAterrizajeFormat, 0, 0, "Nave 1", 0, "", "");
+
+                    if (horaProximoAterrizaje.TotalMilliseconds > horaProximoEvento.TotalMilliseconds)
+                    {
+                        horaProximoEvento = horaProximoAterrizaje;
+                    }
                 }
 
-                //var x = new System.TimeSpan(0, 0, 0, 0, Convert.ToInt32(clock.ElapsedMilliseconds));
-                TimeSpan x = new System.TimeSpan(0, 0, 0, 0, milisegundosASimular);
-                clock = x;
-                //tiempoTranscurrido = x;
-                //Stopwatch y = new Stopwatch();
+                TimeSpan proximoEvento = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(horaProximoEvento.TotalMilliseconds));
 
+                clock = proximoEvento;
             }
 
             /*for (Stopwatch clock = new Stopwatch(); clock.ElapsedMilliseconds < milisegundosASimular; clock.Elapsed.Add(tiempoTranscurrido))
