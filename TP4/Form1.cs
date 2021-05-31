@@ -284,5 +284,10 @@ namespace TP4
         {
 
         }
+
+        private void SimulacionTP5_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

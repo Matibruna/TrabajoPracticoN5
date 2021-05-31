@@ -71,6 +71,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.iniciarSimulacion = new System.Windows.Forms.Button();
             this.txtTiempoASimular = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -431,11 +432,21 @@
             this.txtTiempoASimular.Text = "10";
             this.txtTiempoASimular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(633, 15);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 13);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Minutos de simulación";
+            // 
             // SimulacionTP5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1535, 591);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.txtTiempoASimular);
             this.Controls.Add(this.iniciarSimulacion);
             this.Controls.Add(this.label15);
@@ -468,6 +479,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SimulacionTP5";
             this.Text = "Simulacion TP°5";
+            this.Load += new System.EventHandler(this.SimulacionTP5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -517,6 +529,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.Button iniciarSimulacion;
         private System.Windows.Forms.TextBox txtTiempoASimular;
+        private System.Windows.Forms.Label label19;
     }
 }
 
