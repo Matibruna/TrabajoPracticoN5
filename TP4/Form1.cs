@@ -83,6 +83,7 @@ namespace TP4
             var tiempoASimular = new System.TimeSpan(0, minutosASimular, 0);
 
             string eventoActual = "";
+            IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
 
             List<Aeroplane> zonasAterrizaje = new List<Aeroplane>(30);
             //IList<Aeroplane> zonasAterrizaje = new Aeroplane[30];
