@@ -61,6 +61,10 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cantidadAvionesEnTierra = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.simularDesde = new System.Windows.Forms.TextBox();
+            this.simularHasta = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +75,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.navesTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +110,7 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn6,
+            this.navesTierra,
             this.dataGridViewTextBoxColumn7,
             this.RNDEstadia,
             this.TiempoEstadia,
@@ -115,7 +121,7 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.esperaEnAire});
-            this.dgvSimulacion.Location = new System.Drawing.Point(11, 192);
+            this.dgvSimulacion.Location = new System.Drawing.Point(9, 192);
             this.dgvSimulacion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSimulacion.Name = "dgvSimulacion";
             this.dgvSimulacion.ReadOnly = true;
@@ -350,7 +356,7 @@
             this.groupBox3.Controls.Add(this.despegueDesde);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(1137, 55);
+            this.groupBox3.Location = new System.Drawing.Point(1062, 55);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(269, 75);
             this.groupBox3.TabIndex = 37;
@@ -375,7 +381,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.desviacionEspera);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Location = new System.Drawing.Point(719, 35);
+            this.groupBox4.Location = new System.Drawing.Point(722, 35);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(232, 95);
             this.groupBox4.TabIndex = 36;
@@ -402,19 +408,23 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.label12);
+            this.groupBox5.Controls.Add(this.simularHasta);
+            this.groupBox5.Controls.Add(this.simularDesde);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.txtTiempoASimular);
             this.groupBox5.Controls.Add(this.iniciarSimulacion);
-            this.groupBox5.Location = new System.Drawing.Point(1767, 27);
+            this.groupBox5.Location = new System.Drawing.Point(1576, 27);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(270, 133);
+            this.groupBox5.Size = new System.Drawing.Size(461, 133);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Simulacion";
             // 
             // cantidadAvionesEnTierra
             // 
-            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1562, 91);
+            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1431, 91);
             this.cantidadAvionesEnTierra.Name = "cantidadAvionesEnTierra";
             this.cantidadAvionesEnTierra.Size = new System.Drawing.Size(80, 20);
             this.cantidadAvionesEnTierra.TabIndex = 17;
@@ -424,11 +434,47 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1530, 71);
+            this.label10.Location = new System.Drawing.Point(1399, 71);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 13);
             this.label10.TabIndex = 17;
             this.label10.Text = "Cantidad de aviones en tierra:";
+            // 
+            // simularDesde
+            // 
+            this.simularDesde.Location = new System.Drawing.Point(350, 28);
+            this.simularDesde.Name = "simularDesde";
+            this.simularDesde.Size = new System.Drawing.Size(80, 20);
+            this.simularDesde.TabIndex = 35;
+            this.simularDesde.Text = "0";
+            this.simularDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // simularHasta
+            // 
+            this.simularHasta.Location = new System.Drawing.Point(350, 82);
+            this.simularHasta.Name = "simularHasta";
+            this.simularHasta.Size = new System.Drawing.Size(80, 20);
+            this.simularHasta.TabIndex = 36;
+            this.simularHasta.Text = "150";
+            this.simularHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(271, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Simular desde";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(271, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 13);
+            this.label13.TabIndex = 38;
+            this.label13.Text = "Simular hasta";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -489,6 +535,12 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Cola Espera Despegue";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // navesTierra
+            // 
+            this.navesTierra.HeaderText = "Naves en Tierra";
+            this.navesTierra.Name = "navesTierra";
+            this.navesTierra.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -617,6 +669,10 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox cantidadAvionesEnTierra;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox simularHasta;
+        private System.Windows.Forms.TextBox simularDesde;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -627,6 +683,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn navesTierra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn RNDEstadia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiempoEstadia;
