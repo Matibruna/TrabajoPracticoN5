@@ -375,7 +375,7 @@ namespace TP4
                         eventoActual = "Nave "+ naveInicioDespegue.id.ToString() + " ingresa a la cola de despegue.";
                         relojSimulacion = naveInicioDespegue.horaInicioDespegue;
                         horaProximoEvento = relojSimulacion;
-                        dgvSimulacion.Rows.Add(getLocalHour(naveInicioDespegue.horaInicioDespegue), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, naveEnPista != null ? "Nave " +naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "");
+                        dgvSimulacion.Rows.Add(getLocalHour(naveInicioDespegue.horaInicioDespegue), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, naveEnPista != null ? "Nave " +naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "");
                     }
 
                     

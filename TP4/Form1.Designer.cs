@@ -30,23 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulacionTP5));
             this.dgvSimulacion = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDDemora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Demora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFinEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aterrizajeDesde = new System.Windows.Forms.TextBox();
             this.aterrizajeHasta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,6 +59,23 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNDDemora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Demora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFinEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -112,111 +112,9 @@
             this.dgvSimulacion.Name = "dgvSimulacion";
             this.dgvSimulacion.ReadOnly = true;
             this.dgvSimulacion.RowTemplate.Height = 28;
-            this.dgvSimulacion.Size = new System.Drawing.Size(1667, 497);
+            this.dgvSimulacion.Size = new System.Drawing.Size(1734, 497);
             this.dgvSimulacion.TabIndex = 6;
             this.dgvSimulacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSimulacion_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Reloj";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "RNDllegada";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // RNDDemora
-            // 
-            this.RNDDemora.HeaderText = "Tiempo Entre Llegada";
-            this.RNDDemora.Name = "RNDDemora";
-            this.RNDDemora.ReadOnly = true;
-            // 
-            // Demora
-            // 
-            this.Demora.HeaderText = "Proxima Llegada";
-            this.Demora.Name = "Demora";
-            this.Demora.ReadOnly = true;
-            // 
-            // Orden
-            // 
-            this.Orden.HeaderText = "RNDaterrizaje";
-            this.Orden.Name = "Orden";
-            this.Orden.ReadOnly = true;
-            // 
-            // Disponible
-            // 
-            this.Disponible.HeaderText = "Tiempo de Aterrizaje";
-            this.Disponible.Name = "Disponible";
-            this.Disponible.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Hora de aterrizaje";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cola Espera Aterrizaje";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Cola Espera Despegue";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "En Pista";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // RNDEstadia
-            // 
-            this.RNDEstadia.HeaderText = "RNDEstadia";
-            this.RNDEstadia.Name = "RNDEstadia";
-            this.RNDEstadia.ReadOnly = true;
-            // 
-            // TiempoEstadia
-            // 
-            this.TiempoEstadia.HeaderText = "Tiempo Estadia";
-            this.TiempoEstadia.Name = "TiempoEstadia";
-            this.TiempoEstadia.ReadOnly = true;
-            // 
-            // HoraFinEstadia
-            // 
-            this.HoraFinEstadia.HeaderText = "Hora Fin Estadia";
-            this.HoraFinEstadia.Name = "HoraFinEstadia";
-            this.HoraFinEstadia.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "RNDespegue";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Tiempo de Despegue";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Proximo Evento";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // aterrizajeDesde
             // 
@@ -398,7 +296,7 @@
             this.txtTiempoASimular.Name = "txtTiempoASimular";
             this.txtTiempoASimular.Size = new System.Drawing.Size(80, 20);
             this.txtTiempoASimular.TabIndex = 33;
-            this.txtTiempoASimular.Text = "10";
+            this.txtTiempoASimular.Text = "150";
             this.txtTiempoASimular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label19
@@ -499,18 +397,120 @@
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.txtTiempoASimular);
             this.groupBox5.Controls.Add(this.iniciarSimulacion);
-            this.groupBox5.Location = new System.Drawing.Point(1394, 30);
+            this.groupBox5.Location = new System.Drawing.Point(1459, 26);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(273, 133);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Simulacion";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Reloj";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "RNDllegada";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // RNDDemora
+            // 
+            this.RNDDemora.HeaderText = "Tiempo Entre Llegada";
+            this.RNDDemora.Name = "RNDDemora";
+            this.RNDDemora.ReadOnly = true;
+            // 
+            // Demora
+            // 
+            this.Demora.HeaderText = "Proxima Llegada";
+            this.Demora.Name = "Demora";
+            this.Demora.ReadOnly = true;
+            // 
+            // Orden
+            // 
+            this.Orden.HeaderText = "RNDaterrizaje";
+            this.Orden.Name = "Orden";
+            this.Orden.ReadOnly = true;
+            // 
+            // Disponible
+            // 
+            this.Disponible.HeaderText = "Tiempo de Aterrizaje";
+            this.Disponible.Name = "Disponible";
+            this.Disponible.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Hora de aterrizaje";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Cola Espera Aterrizaje";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Cola Espera Despegue";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "En Pista";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // RNDEstadia
+            // 
+            this.RNDEstadia.HeaderText = "RNDEstadia";
+            this.RNDEstadia.Name = "RNDEstadia";
+            this.RNDEstadia.ReadOnly = true;
+            // 
+            // TiempoEstadia
+            // 
+            this.TiempoEstadia.HeaderText = "Tiempo Estadia";
+            this.TiempoEstadia.Name = "TiempoEstadia";
+            this.TiempoEstadia.ReadOnly = true;
+            // 
+            // HoraFinEstadia
+            // 
+            this.HoraFinEstadia.HeaderText = "Hora Fin Estadia";
+            this.HoraFinEstadia.Name = "HoraFinEstadia";
+            this.HoraFinEstadia.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "RNDespegue";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Tiempo de Despegue";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Hora Despegue";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
             // SimulacionTP5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1689, 700);
+            this.ClientSize = new System.Drawing.Size(1756, 700);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -560,6 +560,14 @@
         private System.Windows.Forms.Button iniciarSimulacion;
         private System.Windows.Forms.TextBox txtTiempoASimular;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -577,14 +585,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 
