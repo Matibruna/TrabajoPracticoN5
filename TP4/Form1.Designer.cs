@@ -59,12 +59,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.simularHasta = new System.Windows.Forms.TextBox();
+            this.simularDesde = new System.Windows.Forms.TextBox();
             this.cantidadAvionesEnTierra = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.simularDesde = new System.Windows.Forms.TextBox();
-            this.simularHasta = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.mediaEsperaEnAire = new System.Windows.Forms.TextBox();
+            this.mati = new System.Windows.Forms.Label();
+            this.totalAterrizaron = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.totalDespegaron = new System.Windows.Forms.TextBox();
+            this.mediaEsperaEnTierra = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +94,11 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.esperaEnAire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esperaTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porcentajeNavesDespegue = new System.Windows.Forms.TextBox();
+            this.porcentajeNavesAterrizaje = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -120,15 +133,15 @@
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
-            this.esperaEnAire});
+            this.esperaEnAire,
+            this.esperaTierra});
             this.dgvSimulacion.Location = new System.Drawing.Point(9, 192);
             this.dgvSimulacion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSimulacion.Name = "dgvSimulacion";
             this.dgvSimulacion.ReadOnly = true;
             this.dgvSimulacion.RowTemplate.Height = 28;
-            this.dgvSimulacion.Size = new System.Drawing.Size(2041, 497);
+            this.dgvSimulacion.Size = new System.Drawing.Size(2114, 497);
             this.dgvSimulacion.TabIndex = 6;
-            this.dgvSimulacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSimulacion_CellContentClick);
             // 
             // aterrizajeDesde
             // 
@@ -210,7 +223,6 @@
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 16;
             this.label8.Text = "(Uniforme)";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -229,7 +241,6 @@
             this.mediaEspera.TabIndex = 18;
             this.mediaEspera.Text = "80";
             this.mediaEspera.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mediaEspera.TextChanged += new System.EventHandler(this.mediaEspera_TextChanged);
             // 
             // desviacionEspera
             // 
@@ -422,6 +433,42 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Simulacion";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(271, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 13);
+            this.label13.TabIndex = 38;
+            this.label13.Text = "Simular hasta";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(271, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Simular desde";
+            // 
+            // simularHasta
+            // 
+            this.simularHasta.Location = new System.Drawing.Point(350, 82);
+            this.simularHasta.Name = "simularHasta";
+            this.simularHasta.Size = new System.Drawing.Size(80, 20);
+            this.simularHasta.TabIndex = 36;
+            this.simularHasta.Text = "150";
+            this.simularHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // simularDesde
+            // 
+            this.simularDesde.Location = new System.Drawing.Point(350, 28);
+            this.simularDesde.Name = "simularDesde";
+            this.simularDesde.Size = new System.Drawing.Size(80, 20);
+            this.simularDesde.TabIndex = 35;
+            this.simularDesde.Text = "0";
+            this.simularDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // cantidadAvionesEnTierra
             // 
             this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1431, 91);
@@ -440,41 +487,81 @@
             this.label10.TabIndex = 17;
             this.label10.Text = "Cantidad de aviones en tierra:";
             // 
-            // simularDesde
+            // mediaEsperaEnAire
             // 
-            this.simularDesde.Location = new System.Drawing.Point(350, 28);
-            this.simularDesde.Name = "simularDesde";
-            this.simularDesde.Size = new System.Drawing.Size(80, 20);
-            this.simularDesde.TabIndex = 35;
-            this.simularDesde.Text = "0";
-            this.simularDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mediaEsperaEnAire.Enabled = false;
+            this.mediaEsperaEnAire.Location = new System.Drawing.Point(174, 724);
+            this.mediaEsperaEnAire.Name = "mediaEsperaEnAire";
+            this.mediaEsperaEnAire.Size = new System.Drawing.Size(80, 20);
+            this.mediaEsperaEnAire.TabIndex = 39;
+            this.mediaEsperaEnAire.TabStop = false;
+            this.mediaEsperaEnAire.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // simularHasta
+            // mati
             // 
-            this.simularHasta.Location = new System.Drawing.Point(350, 82);
-            this.simularHasta.Name = "simularHasta";
-            this.simularHasta.Size = new System.Drawing.Size(80, 20);
-            this.simularHasta.TabIndex = 36;
-            this.simularHasta.Text = "150";
-            this.simularHasta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mati.AutoSize = true;
+            this.mati.Location = new System.Drawing.Point(40, 727);
+            this.mati.Name = "mati";
+            this.mati.Size = new System.Drawing.Size(121, 13);
+            this.mati.TabIndex = 17;
+            this.mati.Text = "Media de espera en aire";
             // 
-            // label12
+            // totalAterrizaron
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(271, 31);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 37;
-            this.label12.Text = "Simular desde";
+            this.totalAterrizaron.Enabled = false;
+            this.totalAterrizaron.Location = new System.Drawing.Point(644, 724);
+            this.totalAterrizaron.Name = "totalAterrizaron";
+            this.totalAterrizaron.Size = new System.Drawing.Size(80, 20);
+            this.totalAterrizaron.TabIndex = 40;
+            this.totalAterrizaron.TabStop = false;
+            this.totalAterrizaron.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // label18
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(271, 85);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 13);
-            this.label13.TabIndex = 38;
-            this.label13.Text = "Simular hasta";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(479, 727);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(159, 13);
+            this.label18.TabIndex = 41;
+            this.label18.Text = "Total de aviones que aterrizaron";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(730, 727);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(166, 13);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "Total de aviones que despegaron";
+            // 
+            // totalDespegaron
+            // 
+            this.totalDespegaron.Enabled = false;
+            this.totalDespegaron.Location = new System.Drawing.Point(902, 724);
+            this.totalDespegaron.Name = "totalDespegaron";
+            this.totalDespegaron.Size = new System.Drawing.Size(80, 20);
+            this.totalDespegaron.TabIndex = 43;
+            this.totalDespegaron.TabStop = false;
+            this.totalDespegaron.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mediaEsperaEnTierra
+            // 
+            this.mediaEsperaEnTierra.Enabled = false;
+            this.mediaEsperaEnTierra.Location = new System.Drawing.Point(393, 724);
+            this.mediaEsperaEnTierra.Name = "mediaEsperaEnTierra";
+            this.mediaEsperaEnTierra.Size = new System.Drawing.Size(80, 20);
+            this.mediaEsperaEnTierra.TabIndex = 44;
+            this.mediaEsperaEnTierra.TabStop = false;
+            this.mediaEsperaEnTierra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(260, 727);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(127, 13);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "Media de espera en tierra";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -602,11 +689,67 @@
             this.esperaEnAire.Name = "esperaEnAire";
             this.esperaEnAire.ReadOnly = true;
             // 
+            // esperaTierra
+            // 
+            this.esperaTierra.HeaderText = "Acumulado Espera en Tierra";
+            this.esperaTierra.Name = "esperaTierra";
+            this.esperaTierra.ReadOnly = true;
+            // 
+            // porcentajeNavesDespegue
+            // 
+            this.porcentajeNavesDespegue.Enabled = false;
+            this.porcentajeNavesDespegue.Location = new System.Drawing.Point(1737, 724);
+            this.porcentajeNavesDespegue.Name = "porcentajeNavesDespegue";
+            this.porcentajeNavesDespegue.Size = new System.Drawing.Size(80, 20);
+            this.porcentajeNavesDespegue.TabIndex = 46;
+            this.porcentajeNavesDespegue.TabStop = false;
+            this.porcentajeNavesDespegue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // porcentajeNavesAterrizaje
+            // 
+            this.porcentajeNavesAterrizaje.Enabled = false;
+            this.porcentajeNavesAterrizaje.Location = new System.Drawing.Point(1317, 724);
+            this.porcentajeNavesAterrizaje.Name = "porcentajeNavesAterrizaje";
+            this.porcentajeNavesAterrizaje.Size = new System.Drawing.Size(80, 20);
+            this.porcentajeNavesAterrizaje.TabIndex = 47;
+            this.porcentajeNavesAterrizaje.TabStop = false;
+            this.porcentajeNavesAterrizaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(988, 727);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(323, 13);
+            this.label22.TabIndex = 48;
+            this.label22.Text = "Porcentaje de naves que comienzan instantaneamente el aterrizaje";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(1403, 727);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(328, 13);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Porcentaje de naves que comienzan instantaneamente el despegue";
+            // 
             // SimulacionTP5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2061, 700);
+            this.ClientSize = new System.Drawing.Size(2134, 774);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.porcentajeNavesAterrizaje);
+            this.Controls.Add(this.porcentajeNavesDespegue);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.mediaEsperaEnTierra);
+            this.Controls.Add(this.totalDespegaron);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.totalAterrizaron);
+            this.Controls.Add(this.mati);
+            this.Controls.Add(this.mediaEsperaEnAire);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cantidadAvionesEnTierra);
             this.Controls.Add(this.groupBox5);
@@ -619,7 +762,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SimulacionTP5";
             this.Text = "Simulacion TP°5";
-            this.Load += new System.EventHandler(this.SimulacionTP5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -673,6 +815,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox simularHasta;
         private System.Windows.Forms.TextBox simularDesde;
+        private System.Windows.Forms.TextBox mediaEsperaEnAire;
+        private System.Windows.Forms.Label mati;
+        private System.Windows.Forms.TextBox totalAterrizaron;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox totalDespegaron;
+        private System.Windows.Forms.TextBox mediaEsperaEnTierra;
+        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -694,6 +844,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn esperaEnAire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esperaTierra;
+        private System.Windows.Forms.TextBox porcentajeNavesDespegue;
+        private System.Windows.Forms.TextBox porcentajeNavesAterrizaje;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
     }
 }
 

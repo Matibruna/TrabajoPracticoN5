@@ -291,10 +291,13 @@ namespace TP4
             TimeSpan relojSimulacion = new TimeSpan(0, 0, 0);
 
             // ACUMULADORES 
+            int contadorAterrizajesInstantaneos = 0;
+            int contadorDespeguesInstantaneos = 0;
             TimeSpan tiempoLlegadaAcum = new TimeSpan(0, 0, 0);
             TimeSpan tiempoAterrizajeAcum = new TimeSpan(0, 0, 0);
             TimeSpan horaProximaLlegadaAcum = new TimeSpan(0, 0, 0);
             TimeSpan tiempoAcumuladoEsperaEnAire = new TimeSpan(0, 0, 0);
+            TimeSpan tiempoAcumuladoEsperaEnTierra = new TimeSpan(0, 0, 0);
             TimeSpan horaProximoEvento = new TimeSpan(0, 0, 0);
             Int64 contadorAeronavesEnTierra = 0;
             Int64 contadorAterrizajes = 0;
@@ -347,7 +350,7 @@ namespace TP4
 
                         if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                         {
-                            dgvSimulacion.Rows.Add(getLocalHour(naveInicioDespegue.horaInicioDespegue), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " +naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                            dgvSimulacion.Rows.Add(getLocalHour(naveInicioDespegue.horaInicioDespegue), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " +naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                         }
                     }
 
@@ -403,15 +406,32 @@ namespace TP4
                                         string tiempoLlegadaFormat = getLocalHour(tiempoLlegada);
                                         string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegada);
                                         string relojFila = getLocalHour(horaProximoEvento);                          
-                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "",  "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "",  "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                     }
 
-                                    horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
                                 } else
                                 {
-                                    // Si al llegar una aeronave en la estación aérea hay 30 unidades (entre las que “esperan en tierra” y las que se encuentran estacionadas), 
-                                    // ésta es derivada a otra estación aérea
+                                    //Redireccionar aeronave a otro aeropuerto, plazas/hangares llenos.
+                                    double random = rnd.NextDouble();
+                                    eventoActual = "Redireccionamiento de avion por hangares llenos";
+
+                                    Tuple<TimeSpan, TimeSpan, TimeSpan> tupla = redireccionarAvion(random, mediaLlegadaAeronaves, tiempoLlegadaAcum, horaProximaLlegadaAcum, relojSimulacion, mostrarDesde, mostrarHasta);
+                                    tiempoLlegadaAcum = tupla.Item1;
+                                    horaProximaLlegadaAcum = tupla.Item2;
+                                    TimeSpan tiempoLlegada = tupla.Item3;
+
+
+                                    if ((mostrarDesde < relojSimulacion) & (relojSimulacion < mostrarHasta))
+                                    {
+                                        string tiempoLlegadaFormat = getLocalHour(tiempoLlegada);
+                                        string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegadaAcum);
+                                        string relojFila = getLocalHour(relojSimulacion);
+
+                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+                                    }
                                 }
+
+                                horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
 
 
                             }
@@ -457,14 +477,11 @@ namespace TP4
                                     string tiempoEstadiaFormat = getLocalHour(tiempoEstadia);
                                     string horaFinEstadiaFormat = getLocalHour(horaFinEstadia);
                                     string relojFila = getLocalHour(relojSimulacion);
-                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", random, tiempoEstadiaFormat, horaFinEstadiaFormat, "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", random, tiempoEstadiaFormat, horaFinEstadiaFormat, "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                 }
 
 
-                                if (colaAterrizaje.Count == 0 && colaDespegue.Count == 0)
-                                {
-                                    horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
-                                }
+                                horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
 
 
                             }
@@ -511,49 +528,34 @@ namespace TP4
                                         string tiempoLlegadaFormat = getLocalHour(tiempoLlegada);
                                         string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegada);
                                         string relojFila = getLocalHour(relojSimulacion);                                
-                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString()); 
+                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString()); 
                                     }
 
                                     
-                                    horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
+                                   
                                 } else
                                 {
-                                    // Si al llegar una aeronave en la estación aérea hay 30 unidades(entre las que “esperan en tierra” y las que se encuentran estacionadas), 
-                                    // ésta es derivada a otra estación aérea
+                                    //Redireccionar aeronave a otro aeropuerto, plazas/hangares llenos.
                                     double random = rnd.NextDouble();
-
                                     eventoActual = "Redireccionamiento de avion por hangares llenos";
 
-                                    // Tiempo de llegada
-                                    double tiempoLlegadaMinutos = generarNumeroExponencial(mediaLlegadaAeronaves, random);
-                                    double tiempoLlegadaMilisegundos = getMillisecondsFromMinutes(tiempoLlegadaMinutos);
-                                    TimeSpan tiempoLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos));
-                                    tiempoLlegadaAcum = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + tiempoLlegadaAcum.TotalMilliseconds));
-                                    // -----------------
-
-                                    // Hora de llegada
-                                    TimeSpan horaProximaLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + relojSimulacion.TotalMilliseconds));
-                                    horaProximaLlegadaAcum = horaProximaLlegada;
-                                    // ---------------
+                                    Tuple<TimeSpan, TimeSpan, TimeSpan> tupla = redireccionarAvion(random, mediaLlegadaAeronaves, tiempoLlegadaAcum, horaProximaLlegadaAcum, relojSimulacion, mostrarDesde, mostrarHasta);
+                                    tiempoLlegadaAcum = tupla.Item1;
+                                    horaProximaLlegadaAcum = tupla.Item2;
+                                    TimeSpan tiempoLlegada = tupla.Item3;
 
 
                                     if ((mostrarDesde < relojSimulacion) & (relojSimulacion < mostrarHasta))
-                                    { 
-
+                                    {
                                         string tiempoLlegadaFormat = getLocalHour(tiempoLlegada);
-                                        string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegada);
+                                        string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegadaAcum);
                                         string relojFila = getLocalHour(relojSimulacion);
 
-                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                        dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                     }
                                 }
 
-
-                                if (colaAterrizaje.Count == 0 && colaDespegue.Count == 0)
-                                {
-                                    horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
-                                }
-
+                                horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaProximoEvento);
 
                                 //
                             }
@@ -577,7 +579,7 @@ namespace TP4
                                 if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                                 {
                                     string relojFila = getLocalHour(relojSimulacion);
-                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                 }
 
                                 horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, relojSimulacion);
@@ -619,6 +621,10 @@ namespace TP4
                     
                             tiempoAcumuladoEsperaEnAire += (relojSimulacion - nave.horaLlegada);
 
+                            if (relojSimulacion == nave.horaLlegada) {
+                                contadorAterrizajesInstantaneos++;
+                            }
+
 
                             if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                             {
@@ -627,23 +633,11 @@ namespace TP4
                                 string horaAterrizajeFormat = getLocalHour(horaProximoAterrizaje);
                                 string relojFila = getLocalHour(relojSimulacion);
 
-                                dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", randomAterrizaje, tiempoAterrizajeFormat, horaAterrizajeFormat, colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", randomAterrizaje, tiempoAterrizajeFormat, horaAterrizajeFormat, colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                             }
 
                             // Como empieza a usar la pista, lo saco de la cola
                             colaAterrizaje.Dequeue();
-
-                            // Si cuando aterriza una nave y despeja la cola, hay otros en cola
-                            //if (colaAterrizaje.Count > 0)
-                            //{
-                            //    // Entonces, el evento inmediatamente despues del aterrizaje, es una autorizacion del que estaba en cola
-                            //    horaProximoEvento = relojSimulacion;
-                            //}
-                            //else
-                            //{
-                            //    // Si no hay nadie mas en cola, sigo con el proximo evento
-                            //    horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, relojSimulacion);
-                            //}
 
                             horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, relojSimulacion);
 
@@ -666,7 +660,10 @@ namespace TP4
 
                             naveEnPista = nave;
 
+                            tiempoAcumuladoEsperaEnTierra += (relojSimulacion - nave.horaInicioDespegue);
+
                             double random = rnd.NextDouble();
+
 
                             // Tiempo de despegue
                             double tiempoDespegueMinutos = generarNumeroUniforme(desdeDespegue, hastaDespegue, random);
@@ -686,6 +683,10 @@ namespace TP4
                             // Empiezo a usar la pista, sale de la cola y de la zona de aterrizaje
                             colaDespegue.Dequeue();
 
+                            if (relojSimulacion == nave.horaInicioDespegue)
+                            {
+                                contadorDespeguesInstantaneos++;
+                            }
 
                             if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                             {
@@ -694,7 +695,7 @@ namespace TP4
                                 string horaDespegueFormat = getLocalHour(horaDespegue);
                                 string relojFila = getLocalHour(relojSimulacion);
 
-                               dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", random, tiempoDespegueFormat, horaDespegueFormat, contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                               dgvSimulacion.Rows.Add(relojFila, eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", random, tiempoDespegueFormat, horaDespegueFormat, contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                             }
 
                             horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, relojSimulacion);
@@ -735,7 +736,7 @@ namespace TP4
                                     string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegada);
                                     string relojFila = getLocalHour(relojSimulacion);
 
-                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                 }
 
 
@@ -764,7 +765,7 @@ namespace TP4
                                     string horaProximaLlegadaFormat = getLocalHour(horaProximaLlegada);
                                     string relojFila = getLocalHour(relojSimulacion);
                                 
-                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString());
+                                    dgvSimulacion.Rows.Add(relojFila, eventoActual, random, tiempoLlegadaFormat, horaProximaLlegadaFormat, "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                                 }
                             }
 
@@ -781,8 +782,47 @@ namespace TP4
                     //error
                 }
 
+
                 relojSimulacion = horaProximoEvento;
             }
+            TimeSpan horaFin = new TimeSpan(0,0,0,0, Convert.ToInt32(milisegundosASimular));
+            dgvSimulacion.Rows.Add(getLocalHour(horaFin), "Fin de simulacion", "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), "", "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+            
+            if(contadorAterrizajes == 0) { contadorAterrizajes = 1;}
+            if(contadorDespegues == 0) { contadorDespegues = 1;}
+
+            TimeSpan mediaEsperaAire = new TimeSpan(0, 0, 0, Convert.ToInt32(tiempoAcumuladoEsperaEnAire.TotalSeconds / contadorAterrizajes));
+            TimeSpan mediaEsperaTierra = new TimeSpan(0, 0, 0, Convert.ToInt32(tiempoAcumuladoEsperaEnTierra.TotalSeconds / contadorDespegues));
+
+            mediaEsperaEnAire.Text = mediaEsperaAire.Hours+":"+mediaEsperaAire.Minutes+":"+mediaEsperaAire.Seconds;
+            mediaEsperaEnTierra.Text = mediaEsperaTierra.Hours + ":" + mediaEsperaTierra.Minutes + ":" + mediaEsperaTierra.Seconds;
+
+            totalAterrizaron.Text = contadorAterrizajes.ToString();
+            totalDespegaron.Text = contadorDespegues.ToString();
+
+            porcentajeNavesAterrizaje.Text = Math.Round((Convert.ToDouble(contadorAterrizajesInstantaneos) / Convert.ToDouble(contadorAterrizajes)), 2).ToString();
+            porcentajeNavesDespegue.Text = Math.Round((Convert.ToDouble(contadorDespeguesInstantaneos) / Convert.ToDouble(contadorDespegues)), 2).ToString();
+
+        }
+
+        private Tuple<TimeSpan, TimeSpan, TimeSpan> redireccionarAvion(double random, Int64 mediaLlegadaAeronaves, TimeSpan tiempoLlegadaAcum, TimeSpan horaProximaLlegadaAcum, TimeSpan relojSimulacion, TimeSpan mostrarDesde, TimeSpan mostrarHasta)
+        {
+            // Si al llegar una aeronave en la estación aérea hay 30 unidades(entre las que “esperan en tierra” y las que se encuentran estacionadas), 
+            // ésta es derivada a otra estación aérea
+
+            // Tiempo de llegada
+            double tiempoLlegadaMinutos = generarNumeroExponencial(mediaLlegadaAeronaves, random);
+            double tiempoLlegadaMilisegundos = getMillisecondsFromMinutes(tiempoLlegadaMinutos);
+            TimeSpan tiempoLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos));
+            tiempoLlegadaAcum = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + tiempoLlegadaAcum.TotalMilliseconds));
+            // -----------------
+
+            // Hora de llegada
+            TimeSpan horaProximaLlegada = new TimeSpan(0, 0, 0, 0, Convert.ToInt32(tiempoLlegadaMilisegundos + relojSimulacion.TotalMilliseconds));
+            horaProximaLlegadaAcum = horaProximaLlegada;
+            // ---------------
+
+            return Tuple.Create(tiempoLlegadaAcum, horaProximaLlegadaAcum, tiempoLlegada);
         }
 
         public string getLocalHour(TimeSpan time)
@@ -877,32 +917,7 @@ namespace TP4
                 this.randomDespegue = randomDespegue;
                 this.tiempoDespegue = tiempoDespegue;
                 this.proximoEvento = proximoEvento;
-        }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvSimulacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void SimulacionTP5_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mediaEspera_TextChanged(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }
