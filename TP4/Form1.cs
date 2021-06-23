@@ -257,6 +257,42 @@ namespace TP4
             return naveADespegar;
         }
 
+        public void rungeKutta(double random, TimeSpan tiempoInicial)
+        {
+            double h = 0.1;
+            TimeSpan H = new TimeSpan(0, 1, 0);
+            TimeSpan tn = tiempoInicial;
+            double t = 0;
+            double Y, k1, k2, k3, k4;
+
+            int i = 0;
+            Y = 1;
+
+            var ecDif = Y * t;
+
+            while (i < 200)
+            {
+                k1 = h * (Y * t);
+
+                k2 = h * ((Y + (0.5 * k1)) * t);
+
+                k3 = h * ((Y + (0.5 * k2)) * t);
+
+                k4 = h * ((Y + k3) * t);
+
+                dgvRungeKutta.Rows.Add(t, Math.Round(Y,4), Math.Round(k1,4), Math.Round(k2,4), Math.Round(k3,4), Math.Round(k4,4));
+
+                // Yi+1
+                Y = Y + (k1 + (2 * k2) + (2 * k3) + k4) / 6;
+
+                // tn+1
+                tn = tn + H;
+                t = t + h;
+
+                i++;
+            }
+        }
+
         private void simulacion2()
         {
             Random rnd = new Random();
@@ -306,6 +342,8 @@ namespace TP4
 
             string eventoActual;
             Int64 contadorNumeroNave = 1;
+
+            rungeKutta(0.5, relojSimulacion);
 
             while (relojSimulacion.TotalMilliseconds < milisegundosASimular)
             {  
@@ -918,6 +956,11 @@ namespace TP4
                 this.tiempoDespegue = tiempoDespegue;
                 this.proximoEvento = proximoEvento;
             }
+        }
+
+        private void dgvSimulacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
