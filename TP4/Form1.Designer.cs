@@ -30,6 +30,28 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulacionTP5));
             this.dgvSimulacion = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNDDemora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Demora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.navesTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFinEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esperaEnAire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esperaTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aterrizajeDesde = new System.Windows.Forms.TextBox();
             this.aterrizajeHasta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,37 +99,26 @@
             this.porcentajeNavesAterrizaje = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDDemora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Demora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Orden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.navesTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PistaFueraDeServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDMantenimientoPista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiempoInicioFinPistaFueraDeServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFinEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esperaEnAire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esperaTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Simulacion = new System.Windows.Forms.TabPage();
+            this.Runge = new System.Windows.Forms.TabPage();
+            this.dgvRungeKutta = new System.Windows.Forms.DataGridView();
+            this.tn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Yn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.k1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.k2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.k3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.k4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.Simulacion.SuspendLayout();
+            this.Runge.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRungeKutta)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvSimulacion
@@ -128,9 +139,6 @@
             this.dataGridViewTextBoxColumn6,
             this.navesTierra,
             this.dataGridViewTextBoxColumn7,
-            this.PistaFueraDeServicio,
-            this.RNDMantenimientoPista,
-            this.TiempoInicioFinPistaFueraDeServicio,
             this.RNDEstadia,
             this.TiempoEstadia,
             this.HoraFinEstadia,
@@ -141,13 +149,147 @@
             this.dataGridViewTextBoxColumn13,
             this.esperaEnAire,
             this.esperaTierra});
-            this.dgvSimulacion.Location = new System.Drawing.Point(9, 192);
+            this.dgvSimulacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSimulacion.Location = new System.Drawing.Point(3, 3);
             this.dgvSimulacion.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSimulacion.Name = "dgvSimulacion";
             this.dgvSimulacion.ReadOnly = true;
             this.dgvSimulacion.RowTemplate.Height = 28;
-            this.dgvSimulacion.Size = new System.Drawing.Size(2114, 497);
+            this.dgvSimulacion.Size = new System.Drawing.Size(1843, 547);
             this.dgvSimulacion.TabIndex = 6;
+            this.dgvSimulacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSimulacion_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Reloj";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "RNDllegada";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // RNDDemora
+            // 
+            this.RNDDemora.HeaderText = "Tiempo Entre Llegada";
+            this.RNDDemora.Name = "RNDDemora";
+            this.RNDDemora.ReadOnly = true;
+            // 
+            // Demora
+            // 
+            this.Demora.HeaderText = "Proxima Llegada";
+            this.Demora.Name = "Demora";
+            this.Demora.ReadOnly = true;
+            // 
+            // Orden
+            // 
+            this.Orden.HeaderText = "RNDaterrizaje";
+            this.Orden.Name = "Orden";
+            this.Orden.ReadOnly = true;
+            // 
+            // Disponible
+            // 
+            this.Disponible.HeaderText = "Tiempo de Aterrizaje";
+            this.Disponible.Name = "Disponible";
+            this.Disponible.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Hora de aterrizaje";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Cola Espera Aterrizaje";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Cola Espera Despegue";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // navesTierra
+            // 
+            this.navesTierra.HeaderText = "Naves en Tierra";
+            this.navesTierra.Name = "navesTierra";
+            this.navesTierra.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "En Pista";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // RNDEstadia
+            // 
+            this.RNDEstadia.HeaderText = "RNDEstadia";
+            this.RNDEstadia.Name = "RNDEstadia";
+            this.RNDEstadia.ReadOnly = true;
+            // 
+            // TiempoEstadia
+            // 
+            this.TiempoEstadia.HeaderText = "Tiempo Estadia";
+            this.TiempoEstadia.Name = "TiempoEstadia";
+            this.TiempoEstadia.ReadOnly = true;
+            // 
+            // HoraFinEstadia
+            // 
+            this.HoraFinEstadia.HeaderText = "Hora Fin Estadia";
+            this.HoraFinEstadia.Name = "HoraFinEstadia";
+            this.HoraFinEstadia.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "RNDespegue";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Tiempo de Despegue";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Hora Despegue";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Cantidad de Aterrizajes";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "Cantidad de Despegues";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // esperaEnAire
+            // 
+            this.esperaEnAire.HeaderText = "Acumulado Espera en Aire";
+            this.esperaEnAire.Name = "esperaEnAire";
+            this.esperaEnAire.ReadOnly = true;
+            // 
+            // esperaTierra
+            // 
+            this.esperaTierra.HeaderText = "Acumulado Espera en Tierra";
+            this.esperaTierra.Name = "esperaTierra";
+            this.esperaTierra.ReadOnly = true;
             // 
             // aterrizajeDesde
             // 
@@ -329,7 +471,6 @@
             this.txtTiempoASimular.TabIndex = 33;
             this.txtTiempoASimular.Text = "150";
             this.txtTiempoASimular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTiempoASimular.TextChanged += new System.EventHandler(this.txtTiempoASimular_TextChanged);
             // 
             // label19
             // 
@@ -346,7 +487,7 @@
             this.groupBox1.Controls.Add(this.mediaExponencial);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Location = new System.Drawing.Point(22, 58);
+            this.groupBox1.Location = new System.Drawing.Point(12, 17);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(202, 67);
             this.groupBox1.TabIndex = 35;
@@ -360,7 +501,7 @@
             this.groupBox2.Controls.Add(this.aterrizajeHasta);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(315, 55);
+            this.groupBox2.Location = new System.Drawing.Point(220, 19);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(269, 75);
             this.groupBox2.TabIndex = 36;
@@ -374,7 +515,7 @@
             this.groupBox3.Controls.Add(this.despegueDesde);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(1062, 55);
+            this.groupBox3.Location = new System.Drawing.Point(733, 26);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(269, 75);
             this.groupBox3.TabIndex = 37;
@@ -399,7 +540,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.desviacionEspera);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Location = new System.Drawing.Point(722, 35);
+            this.groupBox4.Location = new System.Drawing.Point(495, 17);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(232, 95);
             this.groupBox4.TabIndex = 36;
@@ -433,7 +574,7 @@
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.txtTiempoASimular);
             this.groupBox5.Controls.Add(this.iniciarSimulacion);
-            this.groupBox5.Location = new System.Drawing.Point(1576, 27);
+            this.groupBox5.Location = new System.Drawing.Point(1162, 17);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(461, 133);
             this.groupBox5.TabIndex = 36;
@@ -478,7 +619,7 @@
             // 
             // cantidadAvionesEnTierra
             // 
-            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1431, 91);
+            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1040, 63);
             this.cantidadAvionesEnTierra.Name = "cantidadAvionesEnTierra";
             this.cantidadAvionesEnTierra.Size = new System.Drawing.Size(80, 20);
             this.cantidadAvionesEnTierra.TabIndex = 17;
@@ -488,7 +629,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1399, 71);
+            this.label10.Location = new System.Drawing.Point(1009, 42);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 13);
             this.label10.TabIndex = 17;
@@ -608,161 +749,90 @@
             this.label23.TabIndex = 49;
             this.label23.Text = "Porcentaje de naves que comienzan instantaneamente el despegue";
             // 
-            // dataGridViewTextBoxColumn1
+            // tabControl1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Reloj";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.tabControl1.Controls.Add(this.Simulacion);
+            this.tabControl1.Controls.Add(this.Runge);
+            this.tabControl1.Location = new System.Drawing.Point(12, 139);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1857, 579);
+            this.tabControl1.TabIndex = 50;
             // 
-            // dataGridViewTextBoxColumn2
+            // Simulacion
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Evento";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.Simulacion.Controls.Add(this.dgvSimulacion);
+            this.Simulacion.Location = new System.Drawing.Point(4, 22);
+            this.Simulacion.Name = "Simulacion";
+            this.Simulacion.Padding = new System.Windows.Forms.Padding(3);
+            this.Simulacion.Size = new System.Drawing.Size(1849, 553);
+            this.Simulacion.TabIndex = 0;
+            this.Simulacion.Text = "Simulacion";
+            this.Simulacion.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // Runge
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "RNDllegada";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.Runge.Controls.Add(this.dgvRungeKutta);
+            this.Runge.Location = new System.Drawing.Point(4, 22);
+            this.Runge.Name = "Runge";
+            this.Runge.Padding = new System.Windows.Forms.Padding(3);
+            this.Runge.Size = new System.Drawing.Size(1849, 553);
+            this.Runge.TabIndex = 1;
+            this.Runge.Text = "Runge-Kutta";
+            this.Runge.UseVisualStyleBackColor = true;
             // 
-            // RNDDemora
+            // dgvRungeKutta
             // 
-            this.RNDDemora.HeaderText = "Tiempo Entre Llegada";
-            this.RNDDemora.Name = "RNDDemora";
-            this.RNDDemora.ReadOnly = true;
+            this.dgvRungeKutta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRungeKutta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tn,
+            this.Yn,
+            this.k1,
+            this.k2,
+            this.k3,
+            this.k4});
+            this.dgvRungeKutta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRungeKutta.Location = new System.Drawing.Point(3, 3);
+            this.dgvRungeKutta.Name = "dgvRungeKutta";
+            this.dgvRungeKutta.Size = new System.Drawing.Size(1843, 547);
+            this.dgvRungeKutta.TabIndex = 0;
             // 
-            // Demora
+            // tn
             // 
-            this.Demora.HeaderText = "Proxima Llegada";
-            this.Demora.Name = "Demora";
-            this.Demora.ReadOnly = true;
+            this.tn.HeaderText = "tn";
+            this.tn.Name = "tn";
             // 
-            // Orden
+            // Yn
             // 
-            this.Orden.HeaderText = "RNDaterrizaje";
-            this.Orden.Name = "Orden";
-            this.Orden.ReadOnly = true;
+            this.Yn.HeaderText = "Yn";
+            this.Yn.Name = "Yn";
             // 
-            // Disponible
+            // k1
             // 
-            this.Disponible.HeaderText = "Tiempo de Aterrizaje";
-            this.Disponible.Name = "Disponible";
-            this.Disponible.ReadOnly = true;
+            this.k1.HeaderText = "k1";
+            this.k1.Name = "k1";
             // 
-            // dataGridViewTextBoxColumn5
+            // k2
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Hora de aterrizaje";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.k2.HeaderText = "k2";
+            this.k2.Name = "k2";
             // 
-            // dataGridViewTextBoxColumn8
+            // k3
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cola Espera Aterrizaje";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.k3.HeaderText = "k3";
+            this.k3.Name = "k3";
             // 
-            // dataGridViewTextBoxColumn6
+            // k4
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Cola Espera Despegue";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // navesTierra
-            // 
-            this.navesTierra.HeaderText = "Naves en Tierra";
-            this.navesTierra.Name = "navesTierra";
-            this.navesTierra.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "En Pista";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // PistaFueraDeServicio
-            // 
-            this.PistaFueraDeServicio.HeaderText = "Pista Congelada";
-            this.PistaFueraDeServicio.Name = "PistaFueraDeServicio";
-            this.PistaFueraDeServicio.ReadOnly = true;
-            // 
-            // RNDMantenimientoPista
-            // 
-            this.RNDMantenimientoPista.HeaderText = "RND Mantenimiento Pista";
-            this.RNDMantenimientoPista.Name = "RNDMantenimientoPista";
-            this.RNDMantenimientoPista.ReadOnly = true;
-            // 
-            // TiempoInicioFinPistaFueraDeServicio
-            // 
-            this.TiempoInicioFinPistaFueraDeServicio.HeaderText = "Tiempo Fin / Inicio Pista Congelada";
-            this.TiempoInicioFinPistaFueraDeServicio.Name = "TiempoInicioFinPistaFueraDeServicio";
-            this.TiempoInicioFinPistaFueraDeServicio.ReadOnly = true;
-            // 
-            // RNDEstadia
-            // 
-            this.RNDEstadia.HeaderText = "RNDEstadia";
-            this.RNDEstadia.Name = "RNDEstadia";
-            this.RNDEstadia.ReadOnly = true;
-            // 
-            // TiempoEstadia
-            // 
-            this.TiempoEstadia.HeaderText = "Tiempo Estadia";
-            this.TiempoEstadia.Name = "TiempoEstadia";
-            this.TiempoEstadia.ReadOnly = true;
-            // 
-            // HoraFinEstadia
-            // 
-            this.HoraFinEstadia.HeaderText = "Hora Fin Estadia";
-            this.HoraFinEstadia.Name = "HoraFinEstadia";
-            this.HoraFinEstadia.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "RNDespegue";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Tiempo de Despegue";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Hora Despegue";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Cantidad de Aterrizajes";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "Cantidad de Despegues";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // esperaEnAire
-            // 
-            this.esperaEnAire.HeaderText = "Acumulado Espera en Aire";
-            this.esperaEnAire.Name = "esperaEnAire";
-            this.esperaEnAire.ReadOnly = true;
-            // 
-            // esperaTierra
-            // 
-            this.esperaTierra.HeaderText = "Acumulado Espera en Tierra";
-            this.esperaTierra.Name = "esperaTierra";
-            this.esperaTierra.ReadOnly = true;
+            this.k4.HeaderText = "k4";
+            this.k4.Name = "k4";
             // 
             // SimulacionTP5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2134, 774);
+            this.ClientSize = new System.Drawing.Size(1881, 774);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.porcentajeNavesAterrizaje);
@@ -782,7 +852,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgvSimulacion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SimulacionTP5";
@@ -798,6 +867,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.Simulacion.ResumeLayout(false);
+            this.Runge.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRungeKutta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -848,10 +921,6 @@
         private System.Windows.Forms.TextBox totalDespegaron;
         private System.Windows.Forms.TextBox mediaEsperaEnTierra;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox porcentajeNavesDespegue;
-        private System.Windows.Forms.TextBox porcentajeNavesAterrizaje;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -864,9 +933,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn navesTierra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PistaFueraDeServicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RNDMantenimientoPista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiempoInicioFinPistaFueraDeServicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn RNDEstadia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiempoEstadia;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFinEstadia;
@@ -877,6 +943,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn esperaEnAire;
         private System.Windows.Forms.DataGridViewTextBoxColumn esperaTierra;
+        private System.Windows.Forms.TextBox porcentajeNavesDespegue;
+        private System.Windows.Forms.TextBox porcentajeNavesAterrizaje;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Simulacion;
+        private System.Windows.Forms.TabPage Runge;
+        private System.Windows.Forms.DataGridView dgvRungeKutta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Yn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn k1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn k2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn k3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn k4;
     }
 }
 
