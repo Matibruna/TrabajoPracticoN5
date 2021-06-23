@@ -73,6 +73,10 @@
             this.totalDespegaron = new System.Windows.Forms.TextBox();
             this.mediaEsperaEnTierra = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.porcentajeNavesDespegue = new System.Windows.Forms.TextBox();
+            this.porcentajeNavesAterrizaje = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +89,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.navesTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PistaFueraDeServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNDMantenimientoPista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TiempoInicioFinPistaFueraDeServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RNDEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiempoEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraFinEstadia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,10 +102,6 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.esperaEnAire = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.esperaTierra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.porcentajeNavesDespegue = new System.Windows.Forms.TextBox();
-            this.porcentajeNavesAterrizaje = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSimulacion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,6 +128,9 @@
             this.dataGridViewTextBoxColumn6,
             this.navesTierra,
             this.dataGridViewTextBoxColumn7,
+            this.PistaFueraDeServicio,
+            this.RNDMantenimientoPista,
+            this.TiempoInicioFinPistaFueraDeServicio,
             this.RNDEstadia,
             this.TiempoEstadia,
             this.HoraFinEstadia,
@@ -323,6 +329,7 @@
             this.txtTiempoASimular.TabIndex = 33;
             this.txtTiempoASimular.Text = "150";
             this.txtTiempoASimular.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTiempoASimular.TextChanged += new System.EventHandler(this.txtTiempoASimular_TextChanged);
             // 
             // label19
             // 
@@ -563,6 +570,44 @@
             this.label21.TabIndex = 45;
             this.label21.Text = "Media de espera en tierra";
             // 
+            // porcentajeNavesDespegue
+            // 
+            this.porcentajeNavesDespegue.Enabled = false;
+            this.porcentajeNavesDespegue.Location = new System.Drawing.Point(1737, 724);
+            this.porcentajeNavesDespegue.Name = "porcentajeNavesDespegue";
+            this.porcentajeNavesDespegue.Size = new System.Drawing.Size(80, 20);
+            this.porcentajeNavesDespegue.TabIndex = 46;
+            this.porcentajeNavesDespegue.TabStop = false;
+            this.porcentajeNavesDespegue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // porcentajeNavesAterrizaje
+            // 
+            this.porcentajeNavesAterrizaje.Enabled = false;
+            this.porcentajeNavesAterrizaje.Location = new System.Drawing.Point(1317, 724);
+            this.porcentajeNavesAterrizaje.Name = "porcentajeNavesAterrizaje";
+            this.porcentajeNavesAterrizaje.Size = new System.Drawing.Size(80, 20);
+            this.porcentajeNavesAterrizaje.TabIndex = 47;
+            this.porcentajeNavesAterrizaje.TabStop = false;
+            this.porcentajeNavesAterrizaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(988, 727);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(323, 13);
+            this.label22.TabIndex = 48;
+            this.label22.Text = "Porcentaje de naves que comienzan instantaneamente el aterrizaje";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(1403, 727);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(328, 13);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Porcentaje de naves que comienzan instantaneamente el despegue";
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Reloj";
@@ -635,6 +680,24 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
+            // PistaFueraDeServicio
+            // 
+            this.PistaFueraDeServicio.HeaderText = "Pista Congelada";
+            this.PistaFueraDeServicio.Name = "PistaFueraDeServicio";
+            this.PistaFueraDeServicio.ReadOnly = true;
+            // 
+            // RNDMantenimientoPista
+            // 
+            this.RNDMantenimientoPista.HeaderText = "RND Mantenimiento Pista";
+            this.RNDMantenimientoPista.Name = "RNDMantenimientoPista";
+            this.RNDMantenimientoPista.ReadOnly = true;
+            // 
+            // TiempoInicioFinPistaFueraDeServicio
+            // 
+            this.TiempoInicioFinPistaFueraDeServicio.HeaderText = "Tiempo Fin / Inicio Pista Congelada";
+            this.TiempoInicioFinPistaFueraDeServicio.Name = "TiempoInicioFinPistaFueraDeServicio";
+            this.TiempoInicioFinPistaFueraDeServicio.ReadOnly = true;
+            // 
             // RNDEstadia
             // 
             this.RNDEstadia.HeaderText = "RNDEstadia";
@@ -694,44 +757,6 @@
             this.esperaTierra.HeaderText = "Acumulado Espera en Tierra";
             this.esperaTierra.Name = "esperaTierra";
             this.esperaTierra.ReadOnly = true;
-            // 
-            // porcentajeNavesDespegue
-            // 
-            this.porcentajeNavesDespegue.Enabled = false;
-            this.porcentajeNavesDespegue.Location = new System.Drawing.Point(1737, 724);
-            this.porcentajeNavesDespegue.Name = "porcentajeNavesDespegue";
-            this.porcentajeNavesDespegue.Size = new System.Drawing.Size(80, 20);
-            this.porcentajeNavesDespegue.TabIndex = 46;
-            this.porcentajeNavesDespegue.TabStop = false;
-            this.porcentajeNavesDespegue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // porcentajeNavesAterrizaje
-            // 
-            this.porcentajeNavesAterrizaje.Enabled = false;
-            this.porcentajeNavesAterrizaje.Location = new System.Drawing.Point(1317, 724);
-            this.porcentajeNavesAterrizaje.Name = "porcentajeNavesAterrizaje";
-            this.porcentajeNavesAterrizaje.Size = new System.Drawing.Size(80, 20);
-            this.porcentajeNavesAterrizaje.TabIndex = 47;
-            this.porcentajeNavesAterrizaje.TabStop = false;
-            this.porcentajeNavesAterrizaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(988, 727);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(323, 13);
-            this.label22.TabIndex = 48;
-            this.label22.Text = "Porcentaje de naves que comienzan instantaneamente el aterrizaje";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1403, 727);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(328, 13);
-            this.label23.TabIndex = 49;
-            this.label23.Text = "Porcentaje de naves que comienzan instantaneamente el despegue";
             // 
             // SimulacionTP5
             // 
@@ -823,6 +848,10 @@
         private System.Windows.Forms.TextBox totalDespegaron;
         private System.Windows.Forms.TextBox mediaEsperaEnTierra;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox porcentajeNavesDespegue;
+        private System.Windows.Forms.TextBox porcentajeNavesAterrizaje;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -835,6 +864,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn navesTierra;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PistaFueraDeServicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RNDMantenimientoPista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TiempoInicioFinPistaFueraDeServicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn RNDEstadia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TiempoEstadia;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFinEstadia;
@@ -845,10 +877,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn esperaEnAire;
         private System.Windows.Forms.DataGridViewTextBoxColumn esperaTierra;
-        private System.Windows.Forms.TextBox porcentajeNavesDespegue;
-        private System.Windows.Forms.TextBox porcentajeNavesAterrizaje;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
     }
 }
 
