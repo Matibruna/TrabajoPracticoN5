@@ -155,9 +155,8 @@
             this.dgvSimulacion.Name = "dgvSimulacion";
             this.dgvSimulacion.ReadOnly = true;
             this.dgvSimulacion.RowTemplate.Height = 28;
-            this.dgvSimulacion.Size = new System.Drawing.Size(1843, 547);
+            this.dgvSimulacion.Size = new System.Drawing.Size(1843, 561);
             this.dgvSimulacion.TabIndex = 6;
-            this.dgvSimulacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSimulacion_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -501,7 +500,7 @@
             this.groupBox2.Controls.Add(this.aterrizajeHasta);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(220, 19);
+            this.groupBox2.Location = new System.Drawing.Point(220, 17);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(269, 75);
             this.groupBox2.TabIndex = 36;
@@ -515,7 +514,7 @@
             this.groupBox3.Controls.Add(this.despegueDesde);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(733, 26);
+            this.groupBox3.Location = new System.Drawing.Point(733, 17);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(269, 75);
             this.groupBox3.TabIndex = 37;
@@ -619,7 +618,7 @@
             // 
             // cantidadAvionesEnTierra
             // 
-            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1040, 63);
+            this.cantidadAvionesEnTierra.Location = new System.Drawing.Point(1039, 38);
             this.cantidadAvionesEnTierra.Name = "cantidadAvionesEnTierra";
             this.cantidadAvionesEnTierra.Size = new System.Drawing.Size(80, 20);
             this.cantidadAvionesEnTierra.TabIndex = 17;
@@ -629,7 +628,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1009, 42);
+            this.label10.Location = new System.Drawing.Point(1008, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 13);
             this.label10.TabIndex = 17;
@@ -638,7 +637,7 @@
             // mediaEsperaEnAire
             // 
             this.mediaEsperaEnAire.Enabled = false;
-            this.mediaEsperaEnAire.Location = new System.Drawing.Point(174, 724);
+            this.mediaEsperaEnAire.Location = new System.Drawing.Point(186, 755);
             this.mediaEsperaEnAire.Name = "mediaEsperaEnAire";
             this.mediaEsperaEnAire.Size = new System.Drawing.Size(80, 20);
             this.mediaEsperaEnAire.TabIndex = 39;
@@ -648,7 +647,7 @@
             // mati
             // 
             this.mati.AutoSize = true;
-            this.mati.Location = new System.Drawing.Point(40, 727);
+            this.mati.Location = new System.Drawing.Point(52, 758);
             this.mati.Name = "mati";
             this.mati.Size = new System.Drawing.Size(121, 13);
             this.mati.TabIndex = 17;
@@ -657,7 +656,7 @@
             // totalAterrizaron
             // 
             this.totalAterrizaron.Enabled = false;
-            this.totalAterrizaron.Location = new System.Drawing.Point(644, 724);
+            this.totalAterrizaron.Location = new System.Drawing.Point(656, 755);
             this.totalAterrizaron.Name = "totalAterrizaron";
             this.totalAterrizaron.Size = new System.Drawing.Size(80, 20);
             this.totalAterrizaron.TabIndex = 40;
@@ -667,7 +666,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(479, 727);
+            this.label18.Location = new System.Drawing.Point(491, 758);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(159, 13);
             this.label18.TabIndex = 41;
@@ -676,7 +675,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(730, 727);
+            this.label20.Location = new System.Drawing.Point(742, 758);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(166, 13);
             this.label20.TabIndex = 42;
@@ -685,7 +684,7 @@
             // totalDespegaron
             // 
             this.totalDespegaron.Enabled = false;
-            this.totalDespegaron.Location = new System.Drawing.Point(902, 724);
+            this.totalDespegaron.Location = new System.Drawing.Point(914, 755);
             this.totalDespegaron.Name = "totalDespegaron";
             this.totalDespegaron.Size = new System.Drawing.Size(80, 20);
             this.totalDespegaron.TabIndex = 43;
@@ -695,7 +694,7 @@
             // mediaEsperaEnTierra
             // 
             this.mediaEsperaEnTierra.Enabled = false;
-            this.mediaEsperaEnTierra.Location = new System.Drawing.Point(393, 724);
+            this.mediaEsperaEnTierra.Location = new System.Drawing.Point(405, 755);
             this.mediaEsperaEnTierra.Name = "mediaEsperaEnTierra";
             this.mediaEsperaEnTierra.Size = new System.Drawing.Size(80, 20);
             this.mediaEsperaEnTierra.TabIndex = 44;
@@ -705,7 +704,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(260, 727);
+            this.label21.Location = new System.Drawing.Point(272, 758);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(127, 13);
             this.label21.TabIndex = 45;
@@ -714,7 +713,7 @@
             // porcentajeNavesDespegue
             // 
             this.porcentajeNavesDespegue.Enabled = false;
-            this.porcentajeNavesDespegue.Location = new System.Drawing.Point(1737, 724);
+            this.porcentajeNavesDespegue.Location = new System.Drawing.Point(1749, 755);
             this.porcentajeNavesDespegue.Name = "porcentajeNavesDespegue";
             this.porcentajeNavesDespegue.Size = new System.Drawing.Size(80, 20);
             this.porcentajeNavesDespegue.TabIndex = 46;
@@ -724,7 +723,7 @@
             // porcentajeNavesAterrizaje
             // 
             this.porcentajeNavesAterrizaje.Enabled = false;
-            this.porcentajeNavesAterrizaje.Location = new System.Drawing.Point(1317, 724);
+            this.porcentajeNavesAterrizaje.Location = new System.Drawing.Point(1329, 755);
             this.porcentajeNavesAterrizaje.Name = "porcentajeNavesAterrizaje";
             this.porcentajeNavesAterrizaje.Size = new System.Drawing.Size(80, 20);
             this.porcentajeNavesAterrizaje.TabIndex = 47;
@@ -734,7 +733,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(988, 727);
+            this.label22.Location = new System.Drawing.Point(1000, 758);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(323, 13);
             this.label22.TabIndex = 48;
@@ -743,7 +742,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1403, 727);
+            this.label23.Location = new System.Drawing.Point(1415, 758);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(328, 13);
             this.label23.TabIndex = 49;
@@ -753,10 +752,10 @@
             // 
             this.tabControl1.Controls.Add(this.Simulacion);
             this.tabControl1.Controls.Add(this.Runge);
-            this.tabControl1.Location = new System.Drawing.Point(12, 139);
+            this.tabControl1.Location = new System.Drawing.Point(12, 156);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1857, 579);
+            this.tabControl1.Size = new System.Drawing.Size(1857, 593);
             this.tabControl1.TabIndex = 50;
             // 
             // Simulacion
@@ -765,7 +764,7 @@
             this.Simulacion.Location = new System.Drawing.Point(4, 22);
             this.Simulacion.Name = "Simulacion";
             this.Simulacion.Padding = new System.Windows.Forms.Padding(3);
-            this.Simulacion.Size = new System.Drawing.Size(1849, 553);
+            this.Simulacion.Size = new System.Drawing.Size(1849, 567);
             this.Simulacion.TabIndex = 0;
             this.Simulacion.Text = "Simulacion";
             this.Simulacion.UseVisualStyleBackColor = true;
@@ -776,7 +775,7 @@
             this.Runge.Location = new System.Drawing.Point(4, 22);
             this.Runge.Name = "Runge";
             this.Runge.Padding = new System.Windows.Forms.Padding(3);
-            this.Runge.Size = new System.Drawing.Size(1849, 553);
+            this.Runge.Size = new System.Drawing.Size(1849, 567);
             this.Runge.TabIndex = 1;
             this.Runge.Text = "Runge-Kutta";
             this.Runge.UseVisualStyleBackColor = true;
@@ -794,7 +793,7 @@
             this.dgvRungeKutta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRungeKutta.Location = new System.Drawing.Point(3, 3);
             this.dgvRungeKutta.Name = "dgvRungeKutta";
-            this.dgvRungeKutta.Size = new System.Drawing.Size(1843, 547);
+            this.dgvRungeKutta.Size = new System.Drawing.Size(1843, 561);
             this.dgvRungeKutta.TabIndex = 0;
             // 
             // tn
@@ -831,7 +830,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1881, 774);
+            this.ClientSize = new System.Drawing.Size(1881, 787);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
