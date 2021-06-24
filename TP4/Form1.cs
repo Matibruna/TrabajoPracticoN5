@@ -42,6 +42,7 @@ namespace TP4
             dgvRungeKutta.Rows.Clear();
             dgvRungeKuttaLimpieza.Rows.Clear();
             simulacion2();
+            //TP6 finalizado.
         }
 
         public class Aeroplane
