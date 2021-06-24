@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace TP4
@@ -287,8 +288,12 @@ namespace TP4
         {
             double h = 1;
             double t = 0;
-            double E, k1, k2, k3, k4;
+            double E, k1=0, k2=0, k3=0, k4=0;
             double a = Convert.ToDouble(textBox1.Text);
+            bool primero = true; 
+            bool segundo = true;
+            int first = 0;
+            int second = 0;
 
             E = 15;
 
@@ -304,12 +309,27 @@ namespace TP4
 
                 dgvRungeKutta.Rows.Add(t, Math.Round(E, 4), Math.Round(k1, 4), Math.Round(k2, 4), Math.Round(k3, 4), Math.Round(k4, 4));
 
+                if (E > 50 && primero) {
+                    first = dgvRungeKutta.Rows.Count - 2;
+                    primero = false;
+                }
+                if (E > 75 && segundo)
+                {
+                    second = dgvRungeKutta.Rows.Count - 2;
+                    segundo = false;
+                }
+
+
                 // Et+1
                 E += (k1 + (2 * k2) + (2 * k3) + k4) * h / 6;
 
                 // t+1
                 t += h;
             }
+            dgvRungeKutta.Rows.Add(t, Math.Round(E, 4), Math.Round(k1, 4), Math.Round(k2, 4), Math.Round(k3, 4), Math.Round(k4, 4));
+            dgvRungeKutta.Rows[dgvRungeKutta.Rows.Count - 2].DefaultCellStyle.BackColor = Color.Yellow;
+            dgvRungeKutta.Rows[second].DefaultCellStyle.BackColor = Color.Yellow;
+            dgvRungeKutta.Rows[first].DefaultCellStyle.BackColor = Color.Yellow;
             return t;
         }
 
