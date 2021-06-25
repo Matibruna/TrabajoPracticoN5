@@ -284,7 +284,7 @@ namespace TP4
             return a * E;
         }
 
-        public double rungeKutta(TimeSpan tiempoInicial, double tope)
+        public double rungeKutta(double tope)
         {
             double h = 1;
             double t = 0;
@@ -493,7 +493,7 @@ namespace TP4
                         //Habria que tirar un random y definir a que hora sera el proximo congelamiento de pista / pista fuera de servicio.
                         if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                         {
-                            dgvSimulacion.Rows.Add(getLocalHour(horaProximoEvento), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", random, horaInicioMantenimientoPista, "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+                            dgvSimulacion.Rows.Add(getLocalHour(horaProximoEvento), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", random, getLocalHour(horaInicioMantenimientoPista), "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                         }
                         horaFinMantenimientoPista = horaInicioMantenimientoPista;
                         horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaFinMantenimientoPista, horaInicioMantenimientoPista, horaProximoEvento, pistaMantenimiento);
@@ -504,7 +504,16 @@ namespace TP4
                     {
                         if (naveEnPista != null)
                         {
-
+                            if(naveEnPista.evento == "Despegue")
+                            {
+                                dgvSimulacion.Rows.Add(getLocalHour(horaInicioMantenimientoPista), "Mantenimiento Reprogramado.", "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", "", getLocalHour(naveEnPista.horaDespegue), "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+                                horaInicioMantenimientoPista = naveEnPista.horaDespegue;
+                            }
+                            else
+                            {
+                                dgvSimulacion.Rows.Add(getLocalHour(horaInicioMantenimientoPista), "Mantenimiento Reprogramado.", "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", "", getLocalHour(naveEnPista.horaAterrizaje), "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+                                horaInicioMantenimientoPista = naveEnPista.horaAterrizaje;
+                            }
                         }
                         else
                         {
@@ -515,13 +524,12 @@ namespace TP4
                             //Habria que tirar un random y definir a que hora sera el proximo congelamiento de pista / pista fuera de servicio.
                             if ((mostrarDesde.TotalSeconds < relojSimulacion.TotalSeconds) & (relojSimulacion.TotalSeconds < mostrarHasta.TotalSeconds))
                             {
-                                dgvSimulacion.Rows.Add(getLocalHour(horaProximoEvento), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", contadorLlegadas, horaFinMantenimientoPista, "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
+                                dgvSimulacion.Rows.Add(getLocalHour(horaProximoEvento), eventoActual, "", "", "", "", "", "", colaAterrizaje.Count, colaDespegue.Count, contadorAeronavesEnTierra.ToString(), naveEnPista != null ? "Nave " + naveEnPista.id.ToString() : "Pista Vacia", pistaMantenimiento ? "Pista en mantenimiento." : "Pista funcional.", contadorLlegadas, getLocalHour(horaFinMantenimientoPista), "", "", "", "", "", "", contadorAterrizajes.ToString(), contadorDespegues.ToString(), tiempoAcumuladoEsperaEnAire.ToString(), tiempoAcumuladoEsperaEnTierra.ToString());
                             }
                             contadorLlegadas = 0;
                             horaInicioMantenimientoPista = horaFinMantenimientoPista + getHoraMantenimiento(random);
-                            horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaFinMantenimientoPista, horaInicioMantenimientoPista, horaProximoEvento, pistaMantenimiento);
                         }
-
+                        horaProximoEvento = nextEvent(horaProximaLlegadaAcum, colaAterrizaje, colaDespegue, zonasAterrizaje, naveEnPista, horaFinMantenimientoPista, horaInicioMantenimientoPista, horaProximoEvento, pistaMantenimiento);
                     }
 
                     if (naveEnPista != null)
@@ -983,11 +991,15 @@ namespace TP4
 
         private void calcularRungeKutta(TimeSpan relojSistema)
         {
-            probabilidad3 = new TimeSpan(0, Convert.ToInt32(rungeKutta(relojSistema, 50)), 0);
+            probabilidad3 = new TimeSpan(0, Convert.ToInt32(rungeKutta(50)), 0);
             dgvRungeKutta.Rows.Clear();
-            probabilidad2 = new TimeSpan(0, Convert.ToInt32(rungeKutta(relojSistema, 75)), 0);
+            probabilidad2 = new TimeSpan(0, Convert.ToInt32(rungeKutta(75)), 0);
             dgvRungeKutta.Rows.Clear();
-            probabilidad1 = new TimeSpan(0, Convert.ToInt32(rungeKutta(relojSistema, 100)), 0);
+            probabilidad1 = new TimeSpan(0, Convert.ToInt32(rungeKutta(100)), 0);
+
+            rk1.Text = getLocalHour(probabilidad1);
+            rk2.Text = getLocalHour(probabilidad2);
+            rk3.Text = getLocalHour(probabilidad3);
         }
 
         private TimeSpan getHoraMantenimiento(double random)
